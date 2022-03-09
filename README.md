@@ -33,8 +33,8 @@ pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonA
 python setup.py build_ext --inplace
 ```
 # 更新
-None
 
+2022/3/9 14：32 可识别渊下宫的鱼
 
 # 修复
 None
