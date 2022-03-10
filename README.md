@@ -30,7 +30,7 @@ pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonA
 
 2.<font color=7cfc00>激活虚拟环境后</font>进入解压出来的cocoapi-master\PythonAPI文件夹下，输入
 ```shell
-python setup.py build_ext --inplace
+python setup.py build_ext --install
 ```
 # 更新
 None
