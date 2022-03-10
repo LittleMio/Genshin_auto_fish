@@ -3,6 +3,13 @@
 
 所有权归[7eu7d7](https://github.com/7eu7d7)所有
 
+**现已支持不同分辨率屏幕**
+
+原神自动钓鱼AI由[YOLOX](https://github.com/Megvii-BaseDetection/YOLOX), DQN两部分模型组成。使用迁移学习，半监督学习进行训练。
+模型也包含一些使用opencv等传统数字图像处理方法实现的不可学习部分。
+
+其中YOLOX用于鱼的定位和类型的识别以及鱼竿落点的定位。DQN用于自适应控制钓鱼过程的点击，让力度落在最佳区域内。
+
 # 注意
 1.一定要，一定要，一定要先安装[Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/) 否则安装pycocotools和yolox的时候会出现奇奇怪怪的错误
 
@@ -39,13 +46,6 @@ python setup.py build_ext --install
 # 修复
 None
 
-# Introduction
-**现已支持不同分辨率屏幕**
-
-原神自动钓鱼AI由[YOLOX](https://github.com/Megvii-BaseDetection/YOLOX), DQN两部分模型组成。使用迁移学习，半监督学习进行训练。
-模型也包含一些使用opencv等传统数字图像处理方法实现的不可学习部分。
-
-其中YOLOX用于鱼的定位和类型的识别以及鱼竿落点的定位。DQN用于自适应控制钓鱼过程的点击，让力度落在最佳区域内。
 
 # 安装使用流程
 安装python运行环境（解释器），推荐使用 [anaconda](https://www.anaconda.com/products/individual#Downloads).
