@@ -23,8 +23,7 @@ from fisher.models import FishNet
 
 def make_parser():
     parser = argparse.ArgumentParser("YOLOX Demo!")
-    # parser.add_argument("demo", default="image", help="demo type, eg. image, video and webcam")
-    demo = "image"
+    parser.add_argument("demo", default="image", help="demo type, eg. image, video and webcam")
     parser.add_argument("-expn", "--experiment-name", type=str, default=None)
     parser.add_argument("-n", "--name", type=str, default=None, help="model name")
     parser.add_argument("--path", default="./assets/dog.jpg", help="path to images or video")
@@ -37,7 +36,7 @@ def make_parser():
         type=str,
         help="pls input your experiment description file",
     )
-    parser.add_argument("-c", "--ckpt", default='./weights/best_tiny3.pth', type=str, help="ckpt for eval")
+    parser.add_argument("-c", "--ckpt", default=None, type=str, help="ckpt for eval")
     parser.add_argument(
         "--device",
         default="cpu",
