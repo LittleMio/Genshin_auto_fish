@@ -65,7 +65,7 @@ conda activate ysfish
 ## 下载工程代码
 使用git下载，[git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
 ```shell
-git clone https://github.com/7eu7d7/genshin_auto_fish.git
+git clone https://github.com/HuYo-OS/Genshin_auto_fish.git
 ```
 或直接在**github网页端**下载后直接解压。
 
