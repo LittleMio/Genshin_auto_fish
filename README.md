@@ -27,7 +27,7 @@
 
 ### <font color=#0000ff>**安装pycocotools教程**</font>
 
-方法1
+方法1(需要装[git](https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe))
 ```shell
 pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 ```
@@ -37,7 +37,7 @@ pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonA
 
 2.<font color=7cfc00>激活虚拟环境后</font>进入解压出来的cocoapi-master\PythonAPI文件夹下，输入
 ```shell
-python setup.py build_ext --install
+python setup.py build_ext --inplace
 ```
 # 更新
 
