@@ -20,9 +20,11 @@ from fisher.environment import *
 from fisher.predictor import *
 from fisher.models import FishNet
 
+
 def make_parser():
     parser = argparse.ArgumentParser("YOLOX Demo!")
-    parser.add_argument("demo", default="image", help="demo type, eg. image, video and webcam")
+    # parser.add_argument("demo", default="image", help="demo type, eg. image, video and webcam")
+    demo = "image"
     parser.add_argument("-expn", "--experiment-name", type=str, default=None)
     parser.add_argument("-n", "--name", type=str, default=None, help="model name")
     parser.add_argument("--path", default="./assets/dog.jpg", help="path to images or video")
@@ -35,7 +37,7 @@ def make_parser():
         type=str,
         help="pls input your experiment description file",
     )
-    parser.add_argument("-c", "--ckpt", default=None, type=str, help="ckpt for eval")
+    parser.add_argument("-c", "--ckpt", default='./weights/best_tiny3.pth', type=str, help="ckpt for eval")
     parser.add_argument(
         "--device",
         default="cpu",
@@ -44,7 +46,7 @@ def make_parser():
     )
     parser.add_argument("--conf", default=0.3, type=float, help="test conf")
     parser.add_argument("--nms", default=0.3, type=float, help="test nms threshold")
-    parser.add_argument("--tsize", default=None, type=int, help="test img size")
+    parser.add_argument("--tsize", default=640, type=int, help="test img size")
     parser.add_argument(
         "--fp16",
         dest="fp16",
@@ -81,6 +83,7 @@ def make_parser():
     parser.add_argument('--model_dir', default='./weights/fish_genshin_net.pth', type=str)
 
     return parser
+
 
 def main(exp, args):
     if not args.experiment_name:
@@ -138,7 +141,8 @@ def main(exp, args):
         trt_file = None
         decoder = None
 
-    predictor = Predictor(model, exp, FISH_CLASSES, trt_file, decoder, args.device, args.fp16, args.legacy)
+    # predictor = Predictor(model, exp, FISH_CLASSES, trt_file, decoder, args.device, args.fp16, args.legacy)
+    predictor = Predictor(model, exp, VOC_CLASSES, trt_file, decoder, args.device, args.fp16, args.legacy)
 
     agent = FishNet(in_ch=args.n_states, out_ch=args.n_actions)
     agent.load_state_dict(torch.load(args.model_dir))
@@ -152,6 +156,7 @@ def main(exp, args):
         winsound.Beep(500, 500)
         if args.demo == "image":
             start_fishing(predictor, agent)
+
 
 def start_fishing(predictor, agent, bite_timeout=45):
     ff = FishFind(predictor)
@@ -177,17 +182,17 @@ def start_fishing(predictor, agent, bite_timeout=45):
 
         do_fish_count = 0
         winsound.Beep(700, 500)
-        times=0
+        times = 0
         while result is True:
             if env.is_bite():
                 break
             time.sleep(0.5)
-            times+=1
-            if times>bite_timeout and not(env.is_bite()):
+            times += 1
+            if times > bite_timeout and not (env.is_bite()):
                 if env.is_fishing():
                     env.drag()
                 time.sleep(3)
-                times=0
+                times = 0
                 continue_flag = True
                 break
 
@@ -210,7 +215,8 @@ def start_fishing(predictor, agent, bite_timeout=45):
                 break
         time.sleep(3)
 
-#python fishing.py image -f yolox/exp/yolox_tiny_fish.py -c weights/best_tiny3.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu
+
+# python fishing.py image -f yolox/exp/yolox_tiny_fish.py -c weights/best_tiny3.pth --conf 0.25 --nms 0.45 --tsize 640 --device gpu
 if __name__ == "__main__":
     args = make_parser().parse_args()
     exp = get_exp(args.exp_file, args.name)

@@ -4,6 +4,7 @@ from loguru import logger
 import os
 import torch
 import cv2
+from yolox.data.datasets.voc_classes import VOC_CLASSES
 
 from yolox.data.data_augment import ValTransform
 from yolox.data.datasets import FISH_CLASSES
@@ -14,7 +15,7 @@ class Predictor(object):
         self,
         model,
         exp,
-        cls_names=FISH_CLASSES,
+        cls_names=VOC_CLASSES,
         trt_file=None,
         decoder=None,
         device="cpu",
