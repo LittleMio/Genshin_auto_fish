@@ -113,7 +113,7 @@ python requirements.py --cuda 113 --proxy http://127.0.0.1:1080 # use proxy to s
 python setup.py develop
 ```
 
-## 预训练权重下载
+## 预训练权重下载（下面为作者原来的，右边weight是我训练好的）（本项目只对我训练好的模型做了适配）
 下载预训练[权重](https://github.com/7eu7d7/genshin_auto_fish/releases/tag/weights) (.pth文件),[yolox_tiny.pth](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.pth)
 下载后将权重文件放在 <font color=#66CCFF>**工程目录/weights**</font> 下
 
