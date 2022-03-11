@@ -37,13 +37,15 @@ pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonA
 
 2.<font color=7cfc00>激活虚拟环境后</font>进入解压出来的cocoapi-master\PythonAPI文件夹下，输入
 ```shell
-python setup.py build_ext --inplace
+python setup.py build_ext install
 ```
 # 更新
 
 2022/3/9 14:32 可识别渊下宫的鱼
 
 # 修复
+
+2022/3/11 18:35 修复了在鱼饵选择界面如果选择的鱼饵重复会跳出鱼饵详情界面影响程序运行的bug
 
 2022/3/10 21:47 修复了无法换鱼饵，抛竿时无法移动的bug
 
