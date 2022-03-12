@@ -17,7 +17,7 @@
 
 1.<font color=#ff9900>更新显卡驱动到最新版本</font>
 
-2.在NVIDIA官网下载CUDA,[exe(本地)2.4GB](https://developer.download.nvidia.cn/compute/cuda/11.5.1/local_installers/cuda_11.5.1_496.13_windows.exe), [exe(网络)28.7MB](https://developer.download.nvidia.cn/compute/cuda/11.5.1/network_installers/cuda_11.5.1_windows_network.exe) 下载下来后打开无脑下一步，等待其安装完成
+2.在NVIDIA官网下载CUDA,[exe(本地)2.4GB](https://developer.download.nvidia.cn/compute/cuda/11.5.1/local_installers/cuda_11.5.1_496.13_windows.exe), [exe(网络)28.7MB](https://developer.download.nvidia.cn/compute/cuda/11.5.1/network_installers/cuda_11.5.1_windows_network.exe) 【任选一个】下载下来后打开无脑下一步，等待其安装完成
 
 3.在NVIDIA官网下载[CUDNN v8.3.2](https://developer.nvidia.cn/compute/cudnn/secure/8.3.2/local_installers/11.5/cudnn-windows-x86_64-8.3.2.44_cuda11.5-archive.zip)
 
