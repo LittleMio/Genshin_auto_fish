@@ -13,6 +13,8 @@
 # 注意
 1.一定要，一定要，一定要先安装[Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/) 否则安装pycocotools和yolox的时候会出现奇奇怪怪的错误
 
+2.原神需要以1920x1080的分辨率运行，比此分辨率高的屏幕可以开窗口模式。
+
 ### <font color=#0000ff>**安装CUDA和CUDNN教程（CUDA v11.5, CUDNN v8.3.2）**</font>
 
 1.<font color=#ff9900>更新显卡驱动到最新版本</font>
@@ -27,7 +29,7 @@
 
 ### <font color=#0000ff>**安装pycocotools教程**</font>
 
-方法1(需要装[git](https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe))
+方法1(需要装[git](https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe)), [git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
 ```shell
 pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 ```
@@ -66,7 +68,7 @@ conda activate ysfish
 推荐安装<font color=#66CCFF>**python3.7或以下**</font>版本。
 
 ## 下载工程代码
-使用git下载，[git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
+使用git下载
 ```shell
 git clone https://github.com/HuYo-OS/Genshin_auto_fish.git
 ```
@@ -114,8 +116,8 @@ python setup.py develop
 ```
 
 ## 预训练权重下载（下面为作者原来的，右边weight是我训练好的）（本项目只对我训练好的模型做了适配）
-下载预训练[权重](https://github.com/HuYo-OS/Genshin_auto_fish/releases/tag/v0.1) (.pth文件),[yolox_tiny.pth](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.pth)
-下载后将权重文件放在 <font color=#66CCFF>**工程目录/weights**</font> 下
+下载预训练[权重](https://github.com/HuYo-OS/Genshin_auto_fish/releases/tag/v0.1) (.pth文件)【必须】,[yolox_tiny.pth](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.pth)
+【可选】下载后将权重文件放在 <font color=#66CCFF>**工程目录/weights**</font> 下
 
 # 运行钓鱼AI
 原神需要以1920x1080的分辨率运行，比此分辨率高的屏幕可以开窗口模式。
