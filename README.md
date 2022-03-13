@@ -88,6 +88,7 @@ cd genshin_auto_fish
 pip install -U pip
 pip install -r requirements.txt
 ```
+安装PyTorch
 需要<font color=#33e6cc>安装CUDA，CUDNN</font>【<font color=#adff2f>**安装教程看最顶上**</font>】，这里以CUDA11.5为例：
 ```shell
 pip3 install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
