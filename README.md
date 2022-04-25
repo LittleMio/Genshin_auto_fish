@@ -1,7 +1,5 @@
 # 介绍
-修复[genshin_auto_fish](https://github.com/7eu7d7/genshin_auto_fish)里的小bug
-
-所有权归[7eu7d7](https://github.com/7eu7d7)所有
+修复 [genshin_auto_fish](https://github.com/7eu7d7/genshin_auto_fish) 里的小bug
 
 **现已支持不同分辨率屏幕**
 
@@ -11,43 +9,49 @@
 其中YOLOX用于鱼的定位和类型的识别以及鱼竿落点的定位。DQN用于自适应控制钓鱼过程的点击，让力度落在最佳区域内。
 
 # 注意
-1.一定要，一定要，一定要先安装[Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/) 否则安装pycocotools和yolox的时候会出现奇奇怪怪的错误
+##欢迎提交游戏内鱼群图片给我扩充数据集，用于增加识别准确度
+
+##部署这个项目遇到的问题直接在这里提Issues就行，不用再跑到 [原作者(7eu7d7)](https://github.com/7eu7d7) 那里提Issues了
+
+1.一定要，一定要，一定要先安装 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/) 否则安装pycocotools和yolox的时候会出现奇奇怪怪的错误
 
 2.原神需要以1920x1080的分辨率运行，比此分辨率高的屏幕可以开窗口模式。
 
-### <font color=#0000ff>**安装CUDA和CUDNN教程（CUDA v11.5, CUDNN v8.3.2）**</font>
-
+### <font color=#0000ff>**安装CUDA和CUDNN教程（CUDA v11.6.2, CUDNN v8.4.0）**</font>
+### A卡请忽略安装CUDA部分，使用cpu跑(就是有点卡)
 1.<font color=#ff9900>更新显卡驱动到最新版本</font>
 
-2.在NVIDIA官网下载CUDA,[exe(本地)2.4GB](https://developer.download.nvidia.cn/compute/cuda/11.5.1/local_installers/cuda_11.5.1_496.13_windows.exe), [exe(网络)28.7MB](https://developer.download.nvidia.cn/compute/cuda/11.5.1/network_installers/cuda_11.5.1_windows_network.exe) 【任选一个】下载下来后打开无脑下一步，等待其安装完成
+2.在NVIDIA官网下载CUDA,[exe(local)](https://developer.download.nvidia.com/compute/cuda/11.6.2/local_installers/cuda_11.6.2_511.65_windows.exe) [2.5GB] & [exe(network)](https://developer.download.nvidia.com/compute/cuda/11.6.2/network_installers/cuda_11.6.2_windows_network.exe) [33.6MB] 【任选一个】下载下来后打开无脑下一步，等待其安装完成
 
-3.在NVIDIA官网下载[CUDNN v8.3.2](https://developer.nvidia.cn/compute/cudnn/secure/8.3.2/local_installers/11.5/cudnn-windows-x86_64-8.3.2.44_cuda11.5-archive.zip)
+3.在NVIDIA官网下载 [CUDNN v8.4.0](https://developer.nvidia.cn/compute/cudnn/secure/8.4.0/local_installers/11.6/cudnn-windows-x86_64-8.4.0.27_cuda11.6-archive.zip) [670MB] 可能需要登陆NVIDIA账号
 
-4.解压CUDNN zip压缩包，将里面的所有文件复制到以下目录 <font color=#7cfc00>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\ </font>
+4.解压下载下来的CUDNN zip压缩包，将里面的所有文件复制到以下目录 <font color=#7cfc00>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\ </font>
 
 5.重启PC，即安装完成
 
 ### <font color=#0000ff>**安装pycocotools教程**</font>
 
-方法1(需要装[git](https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe)), [git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
+方法1(需要安装[git](https://objects.githubusercontent.com/github-production-release-asset-2e65be/23216272/0c8b279c-5937-4a3d-9daa-d7d9cc235f8c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220425%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220425T164207Z&X-Amz-Expires=300&X-Amz-Signature=313e56d3af436db68ef17ca7b32359943140347336faddda6740e630c945de89&X-Amz-SignedHeaders=host&actor_id=94115384&key_id=0&repo_id=23216272&response-content-disposition=attachment%3B%20filename%3DGit-2.36.0-64-bit.exe&response-content-type=application%2Foctet-stream)), [git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
 ```shell
 pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 ```
 方法2 (方法1无效时可尝试)
 
-1.在此[链接](https://github.com/philferriere/cocoapi/archive/refs/heads/master.zip)下载pycocotools源码并解压
+1.在此 [链接](https://github.com/philferriere/cocoapi/archive/refs/heads/master.zip) & [镜像链接](https://ghproxy.com/https://github.com/philferriere/cocoapi/archive/refs/heads/master.zip) 下载pycocotools源码并解压
 
-2.<font color=7cfc00>激活虚拟环境后</font>进入解压出来的cocoapi-master\PythonAPI文件夹下，输入
+2.<font color=7cfc00>**激活虚拟环境后**</font>进入解压出来的cocoapi-master\PythonAPI文件夹下，输入
 ```shell
 python setup.py build_ext install
 ```
-# 更新
+# 更新&修复&优化
 
-2022/3/9 14:32 可识别渊下宫的鱼
+2022/4/26 0:16 修复了鱼饵 果酿饵 ^ 赤糜饵 的选择问题
 
-# 修复
+2022/4/25 23:36 优化识别的准确度
 
 2022/3/11 18:35 修复了在鱼饵选择界面如果选择的鱼饵重复会跳出鱼饵详情界面影响程序运行的bug
+
+2022/3/9 14:32 更新可识别渊下宫的鱼
 
 2022/3/10 21:47 修复了无法换鱼饵，抛竿时无法移动的bug
 
@@ -72,7 +76,7 @@ conda activate ysfish
 ```shell
 git clone https://github.com/HuYo-OS/Genshin_auto_fish.git
 ```
-或直接在**github网页端**下载后直接解压。
+或直接点这里的 [链接](https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/tags/v0.2.zip) & [镜像链接](https://ghproxy.com/https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/tags/v0.2.zip) 下载后直接解压。
 
 ## 依赖库安装
 切换命令行到本工程所在目录:
@@ -81,7 +85,7 @@ cd genshin_auto_fish
 ```
 ############################################################
 
-<font color=#66ccff>**推荐**</font>
+##<font color=#66ccff>**推荐**</font>
 
 
 ```shell
@@ -91,24 +95,14 @@ pip install -r requirements.txt
 安装PyTorch
 需要<font color=#33e6cc>安装CUDA，CUDNN</font>【<font color=#adff2f>**安装教程看最顶上**</font>】，这里以CUDA11.5为例：
 ```shell
-pip3 install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+如果你是A卡还想要运行的话可以试试安装CPU版的PyTorch
+```shell
+pip3 install torch torchvision torchaudio
 ```
 ############################################################
-
-或执行以下命令安装依赖:
-```shell
-python -m pip install -U pip
-python requirements.py
-```
-如果要使用显卡(小声嘀咕：使用CPU运行的话实在太卡了）进行加速需要 <font color=#33e6cc>安装CUDA和cudnn</font> 【<font color=#adff2f>安装教程看最顶上</font> 】安装后无视上面的命令用下面这条安装gpu版:
-```shell
-pip install -U pip
-python requirements.py --cuda [cuda版本]
-#例如安装的CUDA11.x
-python requirements.py --cuda 113
-python requirements.py --cuda 113 --proxy http://127.0.0.1:1080 # use proxy to speed up
-```
-可能会有Time out之类的报错，多试几遍，github太卡。
 
 ## 安装yolox
 切换命令行到本工程所在目录，执行以下命令安装yolox:
@@ -117,8 +111,7 @@ python setup.py develop
 ```
 
 ## 预训练权重下载（本项目只对我训练好的模型做了适配）
-下载预训练[权重](https://github.com/HuYo-OS/Genshin_auto_fish/releases/tag/v0.1) (.pth文件)【必须】,[yolox_tiny.pth](https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.pth)
-【可选】下载后将权重文件放在 <font color=#66CCFF>**工程目录/weights**</font> 下
+从右边的 [Releases](https://github.com/HuYo-OS/Genshin_auto_fish/releases) 下载权重放到 **工程目录/weights**</font> 下
 
 # 运行钓鱼AI
 原神需要以1920x1080的分辨率运行，比此分辨率高的屏幕可以开窗口模式。
@@ -133,25 +126,10 @@ cpu运行
 ```shell
 python fishing.py image -f yolox/exp/yolox_tiny_fish.py -c weights/best_tiny3.pth --conf 0.25 --nms 0.45 --tsize 640 --device cpu
 ```
-运行后出现**init ok**后按r键开始钓鱼，原神需要全屏。出于性能考虑检测框不会实时显示，处理运算后台进行。
+运行后出现**init ok**后按r键开始钓鱼，原神需要以1920x1080的分辨率运行。出于性能考虑检测框不会实时显示，处理运算后台进行。
 
-# YOLOX训练工作流程(可跳过)
-<**只用来钓鱼不需要训练，直接用预训练权重就可以**>
 
-YOLOX部分因为打标签太累所以用半监督学习。标注少量样本后训练模型生成其余样本伪标签再人工修正，不断迭代提高精度。
-样本量较少所以使用迁移学习，在COCO预训练的模型上进行fine-tuning.
-
-下载数据集并解压：[原神鱼群数据集](https://1drv.ms/u/s!Agabh9imkP8qhHkZYzKsi_OQ4pfj?e=V2VApo), 
-[数据集(迅雷云盘:ugha)](https://pan.xunlei.com/s/VMkCJx-bOnpF431_9R0E8vAsA1)
-
-将yolox/exp/yolox_tiny_fish.py中的self.data_dir的值改为解压后2个文件夹所在的路径。
-
-训练代码:
-```shell
-python yolox_tools/train.py -f yolox/exp/yolox_tiny_fish.py -d 1 -b 8 --fp16 -o -c weights/yolox_tiny.pth
-```
-
-# DQN训练工作流程
+# DQN训练工作流程(以下部分可跳过)
 控制力度使用强化学习模型DQN进行训练。两次进度的差值作为reward为模型提供学习方向。模型与环境间交互式学习。
 
 直接在原神内训练耗时较长，太累了。首先制作一个仿真环境，大概模拟钓鱼力度控制操作。在仿真环境内预训练一个模型。
