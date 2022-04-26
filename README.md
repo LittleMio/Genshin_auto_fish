@@ -25,7 +25,7 @@
 
 3.在NVIDIA官网下载 [CUDNN v8.4.0](https://developer.nvidia.cn/compute/cudnn/secure/8.4.0/local_installers/11.6/cudnn-windows-x86_64-8.4.0.27_cuda11.6-archive.zip) [670MB] 可能需要登陆NVIDIA账号
 
-4.解压下载下来的CUDNN zip压缩包，将里面的所有文件复制到以下目录 <font color=#7cfc00>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.5\ </font>
+4.解压下载下来的CUDNN zip压缩包，将里面的所有文件复制到以下目录 <font color=#7cfc00>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\ </font>
 
 5.重启PC，即安装完成
 
