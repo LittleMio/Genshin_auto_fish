@@ -9,18 +9,19 @@
 其中YOLOX用于鱼的定位和类型的识别以及鱼竿落点的定位。DQN用于自适应控制钓鱼过程的点击，让力度落在最佳区域内。
 
 # 注意
-##欢迎提交游戏内鱼群图片给我扩充数据集，用于增加识别准确度
+## 欢迎提交游戏内鱼群图片给我扩充数据集，用于增加识别准确度
 
-##使用这个项目遇到的问题直接在这里提Issues就行，不用再跑到 [原作者(7eu7d7)](https://github.com/7eu7d7) 那里提Issues了
+## 使用这个项目遇到的问题直接在这里提Issues就行，不用再跑到 [原作者(7eu7d7)](https://github.com/7eu7d7) 那里提Issues了
+
+### 一定要先在游戏内开SMAA再运行此项目！！！！
 
 1.一定要，一定要，一定要先安装 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/) 否则安装pycocotools和yolox的时候会出现奇奇怪怪的错误
 
 2.原神需要以1920x1080的分辨率运行，比此分辨率高的屏幕可以开窗口模式。
 
 ### <font color=#0000ff>**安装CUDA和CUDNN教程（CUDA v11.6.2, CUDNN v8.4.0）**</font>
-### A卡请忽略安装CUDA部分，使用cpu跑(就是有点卡)
+### A卡用户请忽略安装CUDA部分，使用cpu跑(就是有点卡)
 
-### 一定要开SMAA再运行！！！！
 
 1.<font color=#ff9900>更新显卡驱动到最新版本</font>
 
@@ -34,7 +35,8 @@
 
 ### <font color=#0000ff>**安装pycocotools教程**</font>
 
-方法1(需要安装[git](https://objects.githubusercontent.com/github-production-release-asset-2e65be/23216272/0c8b279c-5937-4a3d-9daa-d7d9cc235f8c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220425%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220425T164207Z&X-Amz-Expires=300&X-Amz-Signature=313e56d3af436db68ef17ca7b32359943140347336faddda6740e630c945de89&X-Amz-SignedHeaders=host&actor_id=94115384&key_id=0&repo_id=23216272&response-content-disposition=attachment%3B%20filename%3DGit-2.36.0-64-bit.exe&response-content-type=application%2Foctet-stream)), [git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
+方法1(需要安装[git](https://github.com/git-for-windows/git/releases/download/v2.36.0.windows.1/Git-2.36.0-64-bit.exe)), [git安装教程](https://www.cnblogs.com/xiaoliu66/p/9404963.html):
+
 ```shell
 pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 ```
@@ -79,7 +81,7 @@ conda activate ysfish
 ```shell
 git clone https://github.com/HuYo-OS/Genshin_auto_fish.git
 ```
-或直接点这里的 [链接](https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/tags/v0.2.zip) & [镜像链接](https://ghproxy.com/https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/tags/v0.2.zip) 下载后直接解压。
+或直接点这里的 [链接](https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/heads/main.zip) & [镜像链接](https://ghproxy.com/https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/heads/main.zip) 下载后直接解压。
 
 ## 依赖库安装
 切换命令行到本工程所在目录:
@@ -96,7 +98,7 @@ pip install -U pip
 pip install -r requirements.txt
 ```
 安装PyTorch
-需要<font color=#33e6cc>安装CUDA，CUDNN</font>【<font color=#adff2f>**安装教程看最顶上**</font>】，这里以CUDA11.5为例：
+需要<font color=#33e6cc>安装CUDA，CUDNN</font>【<font color=#adff2f>**安装教程看最顶上**</font>】，这里以CUDA11.6.2为例：
 ```shell
 pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
 ```
@@ -114,7 +116,7 @@ python setup.py develop
 ```
 
 ## 预训练权重下载（本项目只对我训练好的模型做了适配）
-从右边的 [Releases](https://github.com/HuYo-OS/Genshin_auto_fish/releases) 下载权重放到 **工程目录/weights**</font> 下
+从右边的 [Releases](https://github.com/HuYo-OS/Genshin_auto_fish/releases) 下载权重放到 **工程目录/weights**</font> 文件夹下
 
 # 运行钓鱼AI
 原神需要以1920x1080的分辨率运行，比此分辨率高的屏幕可以开窗口模式。
