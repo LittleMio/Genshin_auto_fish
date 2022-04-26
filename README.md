@@ -11,7 +11,7 @@
 # 注意
 ##欢迎提交游戏内鱼群图片给我扩充数据集，用于增加识别准确度
 
-##部署这个项目遇到的问题直接在这里提Issues就行，不用再跑到 [原作者(7eu7d7)](https://github.com/7eu7d7) 那里提Issues了
+##使用这个项目遇到的问题直接在这里提Issues就行，不用再跑到 [原作者(7eu7d7)](https://github.com/7eu7d7) 那里提Issues了
 
 1.一定要，一定要，一定要先安装 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/) 否则安装pycocotools和yolox的时候会出现奇奇怪怪的错误
 
