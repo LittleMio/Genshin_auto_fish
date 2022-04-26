@@ -19,6 +19,9 @@
 
 ### <font color=#0000ff>**安装CUDA和CUDNN教程（CUDA v11.6.2, CUDNN v8.4.0）**</font>
 ### A卡请忽略安装CUDA部分，使用cpu跑(就是有点卡)
+
+### 一定要开SMAA再运行！！！！
+
 1.<font color=#ff9900>更新显卡驱动到最新版本</font>
 
 2.在NVIDIA官网下载CUDA,[exe(local)](https://developer.download.nvidia.com/compute/cuda/11.6.2/local_installers/cuda_11.6.2_511.65_windows.exe) [2.5GB] & [exe(network)](https://developer.download.nvidia.com/compute/cuda/11.6.2/network_installers/cuda_11.6.2_windows_network.exe) [33.6MB] 【任选一个】下载下来后打开无脑下一步，等待其安装完成
