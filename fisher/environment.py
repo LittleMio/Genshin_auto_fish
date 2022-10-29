@@ -168,7 +168,7 @@ class FishFind:
         pyautogui.click(1650, 790, button=pyautogui.SECONDARY)
         time.sleep(0.5)
         bbox_food = match_img(cap(self.food_rgn, fmt='RGB'), self.food_imgs[self.ff_dict[fish_type]],
-                              type=cv2.TM_CCORR_NORMED)
+                              type=cv2.TM_SQDIFF_NORMED)
         pyautogui.click(bbox_food[4] + self.food_rgn[0], bbox_food[5] + self.food_rgn[1])
         time.sleep(0.5)
         if np.mean(np.abs(cap(self.food_rgn)[219][739] - [48, 43, 41])) < 5:
