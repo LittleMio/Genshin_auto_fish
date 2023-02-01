@@ -1,0 +1,46 @@
+name: 反馈 Bug
+description: 反馈错误或异常行为。
+labels: [bug]
+title: "[错误] 请更改标题"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你给 Genshin_auto_fish 提出问题！
+        为了更好地帮助你和定位错误，请提供以下信息。
+  - type: textarea
+    attributes:
+      label: 复现步骤
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 预期行为
+      placeholder: 正常情况下应该发生什么
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 实际行为
+      placeholder: 实际上发生了什么
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 日志
+      description: 如果可以，请复制粘贴错误的日志或提交截图。
+      value: |
+        <details>
+
+        ```
+
+        # 将此行用日志或图片替换
+
+        ```
+        </details>
+    validations:
+      required: false
