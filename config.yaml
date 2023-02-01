@@ -1,0 +1,17 @@
+windows:
+  # 窗口名称
+  window_name: "原神"
+  # ------- ⚠️⚠️⚠️ --------
+  ready_rect: [1020, 639, 1110, 682]
+  pos_rect: [470, 44, 810, 135]
+
+fishing:
+  # 钓雷鸣仙
+  is_dieyu: false
+  # 抛竿后等待超时时间
+  time_out: 15
+  # 是否显示日志
+  show_log: true
+  # 是否显示可视化张力区间与游标位置 [_____________<_____|__>______]
+  show_cur: false
+

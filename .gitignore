@@ -1,0 +1,4 @@
+*.pth
+test*.py
+img_tmp
+__pycache__/
