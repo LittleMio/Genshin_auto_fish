@@ -30,11 +30,11 @@
 
 前往NVIDIA官网的[CUDA下载页面](https://developer.nvidia.cn/cuda-toolkit-archive)根据你的机器型号选择下载并安装
 
-前往NVIDIA官网的[cuDNN下载页面](https://developer.nvidia.com/rdp/cudnn-archive)下载Windows版本的zip压缩包
+前往NVIDIA官网的[cuDNN下载页面](https://developer.nvidia.cn/rdp/cudnn-archive)下载Windows版本的zip压缩包
 
 解压下载下来的cuDNN zip压缩包，将里面的所有文件复制到以下目录 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v**.*\
 
-**如果你已完成以上步骤，请重启电脑进入Python环境配置**
+**如果你已完成以上步骤，请重启电脑后进入Python环境配置的步骤**
 
 ### 1.Python环境配置
 
@@ -53,13 +53,13 @@ conda activate ysfish
 
 ### 2.下载项目代码
 
-- 使用Git下载， 如果Git请查看[Git安装教程](https://cloud.tencent.com/developer/article/2099150)
+- 使用Git下载， 如果没有Git请查看[Git安装教程](https://cloud.tencent.com/developer/article/2099150)
 
 ```shell
 git clone -b development https://github.com/HuYo-OS/Genshin_auto_fish.git
 ```
 
-或直接点这里的 [链接](https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/heads/development.zip) & [镜像链接](https://ghproxy.com/https://github.com/HuYo-OS/Genshin_auto_fish/archive/refs/heads/development.zip) 下载后直接解压。
+或**Code > Download ZIP**下载后直接解压。
 
 ### 3.依赖库安装
 
