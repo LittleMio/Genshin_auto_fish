@@ -16,7 +16,7 @@ from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info
 from yolox.data.datasets.voc_classes import VOC_CLASSES
 
-from utils.config import WINDOW_NAME, READY_RECT, POS_DECT, SHOW_CUR
+from utils.config import WINDOW_NAME, READY_RECT, POS_DECT, SHOW_CUR, TIME_OUT
 from fisher.predictor import Predictor
 from fisher.environment import FishFind
 from fisher.fish import Window, Check
@@ -146,7 +146,7 @@ def main(exp, args):
                 start_fishing(predictor)
 
 
-def start_fishing(predictor, timeout):
+def start_fishing(predictor, TIME_OUT):
     ff = FishFind(predictor)
     window = Window(WINDOW_NAME, 'UnityWndClass')
     Check.setup(window.capture, READY_RECT, POS_DECT)
@@ -174,7 +174,7 @@ def start_fishing(predictor, timeout):
             start_time = time.time()
             while win32gui.GetForegroundWindow() != window.hWnd or not Check().isReady():
                 time.sleep(.05)
-                if round(time.time() - start_time, 1) > timeout:
+                if round(time.time() - start_time, 1) > TIME_OUT:
                     window.click(.08 + random.random()*.2)
                     break
                 assert win32gui.IsWindow(window.hWnd)
