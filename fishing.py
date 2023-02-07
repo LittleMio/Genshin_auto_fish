@@ -140,17 +140,11 @@ def main(exp, args):
     while True:
         print('Waiting for "r" to perform fishing')
         winsound.Beep(500, 500)
-<<<<<<< HEAD
         keyboard.wait('r')
         winsound.Beep(500, 500)
         if args.demo == "image":
-            start_fishing(predictor)
-=======
-        if keyboard.read_key() == "r":
-            winsound.Beep(500, 500)
-            if args.demo == "image":
-                start_fishing(predictor, TIME_OUT)
->>>>>>> 79181b56781140ec79cbae788bbbb5c4f7e49523
+            start_fishing(predictor, TIME_OUT)
+
 
 
 def start_fishing(predictor, TIME_OUT):
