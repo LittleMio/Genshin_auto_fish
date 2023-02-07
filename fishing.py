@@ -146,7 +146,6 @@ def main(exp, args):
             start_fishing(predictor, TIME_OUT)
 
 
-
 def start_fishing(predictor, TIME_OUT):
     ff = FishFind(predictor)
     window = Window(WINDOW_NAME, 'UnityWndClass')
