@@ -143,7 +143,7 @@ def main(exp, args):
         if keyboard.read_key() == "r":
             winsound.Beep(500, 500)
             if args.demo == "image":
-                start_fishing(predictor)
+                start_fishing(predictor, TIME_OUT)
 
 
 def start_fishing(predictor, TIME_OUT):
