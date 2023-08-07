@@ -3,10 +3,8 @@ import time
 import argparse
 import numpy as np
 import win32api, win32con, win32gui, win32ui
-from pathlib import Path
-from loguru import logger
 
-from utils.config import MONITOR_HEIGHT, MONITOR_WIDTH, WINDOW_NAME
+from utils.config import MONITOR_HEIGHT, MONITOR_WIDTH, config
 
 MOUSE_LEFT=0
 MOUSE_MID=1
@@ -16,12 +14,9 @@ mouse_list_down=[win32con.MOUSEEVENTF_LEFTDOWN, win32con.MOUSEEVENTF_MIDDLEDOWN,
 mouse_list_up=[win32con.MOUSEEVENTF_LEFTUP, win32con.MOUSEEVENTF_MIDDLEUP, win32con.MOUSEEVENTF_RIGHTUP]
 
 gvars=argparse.Namespace()
-hwnd = win32gui.FindWindow(None, WINDOW_NAME)
+hwnd = win32gui.FindWindow(None, config.window_name)
 gvars.genshin_window_rect = win32gui.GetWindowRect(hwnd)
 gvars.genshin_window_rect_img = (0, 0, MONITOR_WIDTH, MONITOR_HEIGHT)
-# def cap(region=None):
-#     img = pyautogui.screenshot(region=region) if region else pyautogui.screenshot()
-#     return cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
 
 def cap(region=None ,fmt='RGB'):
     return cap_raw(gvars.genshin_window_rect_img if region is None else (region[0]+gvars.genshin_window_rect_img[0], region[1]+gvars.genshin_window_rect_img[1], region[2], region[3]), fmt=fmt)
@@ -29,16 +24,13 @@ def cap(region=None ,fmt='RGB'):
 def cap_raw(region=None ,fmt='RGB'):
     if region is not None:
         left, top, w, h = region
-        # w = x2 - left + 1
-        # h = y2 - top + 1
     else:
-        w = MONITOR_WIDTH  # set this
-        h = MONITOR_HEIGHT  # set this
+        w = MONITOR_WIDTH
+        h = MONITOR_HEIGHT
         left = 0
         top = 0
 
-    hwnd = win32gui.FindWindow(None, WINDOW_NAME)
-    # hwnd = win32gui.GetDesktopWindow()
+    hwnd = win32gui.FindWindow(None, config.window_name)
     wDC = win32gui.GetWindowDC(hwnd)
     dcObj = win32ui.CreateDCFromHandle(wDC)
     cDC = dcObj.CreateCompatibleDC()
@@ -48,7 +40,6 @@ def cap_raw(region=None ,fmt='RGB'):
 
     cDC.SelectObject(dataBitMap)
     cDC.BitBlt((0, 0), (w, h), dcObj, (left, top), win32con.SRCCOPY)
-    # dataBitMap.SaveBitmapFile(cDC, bmpfilenamename)
     signedIntsArray = dataBitMap.GetBitmapBits(True)
     img = np.fromstring(signedIntsArray, dtype="uint8")
     img.shape = (h, w, 4)

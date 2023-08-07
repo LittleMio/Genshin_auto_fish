@@ -18,15 +18,22 @@
 
 ## |安装使用流程
 ### 0.5.必要环境配置
-- 安装Visual Studio
+> - 安装Visual Studio
 
 前往[Visual Studio官网](https://visualstudio.microsoft.com/zh-hans/downloads/)下载社区版并安装
 
-打开 **Visual Studio Installer** 在工作负荷选项栏中勾选 **使用 C++ 的桌面开发**，把安装路径改到你喜欢的文件夹中，开始安装
+打开 **Visual Studio Installer** 在 **工作负荷** 选项栏中勾选 **使用 C++ 的桌面开发**，把安装路径改到你喜欢的文件夹中，开始安装
 
-- 安装CUDA和CUDNN **(非NVIDA显卡请跳过)**
+---
+> - 安装CUDA和CUDNN **(非NVIDA显卡请跳过)**
 
-我的环境中使用的是**CUDA v11.8.0**，**CUDNN v8.6.0 for CUDA 11.x**
+---
+我的环境中使用的是CUDA v11.8.0，CUDNN v8.9.2 for CUDA 11.x
+注意：cuDNN 要求的 CUDA 版本要和你所安装的 CUDA 的版本相同
+
+---
+
+更新显卡驱动
 
 前往NVIDIA官网的[CUDA下载页面](https://developer.nvidia.cn/cuda-toolkit-archive)根据你的机器型号选择下载并安装
 
@@ -34,7 +41,11 @@
 
 解压下载下来的cuDNN zip压缩包，将里面的所有文件复制到以下目录 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v**.*\
 
+> tip: 其中 v**.* 就是你上面安装的 CUDA 的版本号
+
 **如果你已完成以上步骤，请重启电脑后进入Python环境配置的步骤**
+
+---
 
 ### 1.Python环境配置
 
@@ -56,28 +67,28 @@ conda activate ysfish
 - 使用Git下载， 如果没有Git请查看[Git安装教程](https://cloud.tencent.com/developer/article/2099150)
 
 ```shell
-git clone -b development https://github.com/HuYo-OS/Genshin_auto_fish.git
+git clone https://github.com/HuYo-OS/Genshin_auto_fish.git
 ```
 
 或**Code > Download ZIP**下载后直接解压。
 
 ### 3.依赖库安装
 
-切换命令行到本工程所在目录
+#### 3.1、切换命令行到本项目所在目录
 ```shell
 cd Genshin_auto_fish
 ```
 
-安装PyTorch
+#### 3.2、安装PyTorch （根据你的实际来选择）
 
-- 如果你已经安装CUDA和cuDNN:
+- [**选项1**] 如果你是**NVIDIA**显卡并且已经安装CUDA和cuDNN:
 
 ```shell
 pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117
 ```
 
 
-- 如果你的不是**NVIDIA**显卡 或 只想用CPU跑的
+- [选项2] 如果你的不是**NVIDIA**显卡 或 只想用CPU运行的
 
 ```shell
 pip3 install torch torchvision torchaudio
@@ -112,3 +123,5 @@ python fishing.py --device cpu
 - Q: 启动时报错**pywintypes.error: (1400, 'GetClientRect', '无效的窗口句柄。')**
 - A-1: 需要打开**原神**再运行本项目哦
 ---
+
+### 如有其他问题，欢迎提出Issues
