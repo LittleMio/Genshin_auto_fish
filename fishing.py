@@ -16,7 +16,7 @@ from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info
 from yolox.data.datasets.voc_classes import VOC_CLASSES
 
-from utils.config import WINDOW_NAME, READY_RECT, POS_DECT, SHOW_CUR, TIME_OUT
+from utils.config import config
 from fisher.predictor import Predictor
 from fisher.environment import FishFind
 from fisher.fish import Window, Check
@@ -84,7 +84,8 @@ def main(exp, args):
     if args.trt:
         args.device = "gpu"
 
-    logger.info("Args: {}".format(args))
+    if config.is_debug:
+        logger.info("Args: {}".format(args))
 
     if args.conf is not None:
         exp.test_conf = args.conf
@@ -94,7 +95,9 @@ def main(exp, args):
         exp.test_size = (args.tsize, args.tsize)
 
     model = exp.get_model()
-    logger.info("Model Summary: {}".format(get_model_info(model, exp.test_size)))
+
+    if config.is_debug:
+        logger.info("Model Summary: {}".format(get_model_info(model, exp.test_size)))
 
     if args.device == "gpu":
         model.cuda()
@@ -107,11 +110,13 @@ def main(exp, args):
             ckpt_file = os.path.join(file_name, "best_ckpt.pth")
         else:
             ckpt_file = args.ckpt
-        logger.info("loading checkpoint")
+        if config.is_debug:
+            logger.info("loading checkpoint")
         ckpt = torch.load(ckpt_file, map_location="cpu")
         # load the model state dict
         model.load_state_dict(ckpt["model"])
-        logger.info("loaded checkpoint done.")
+        if config.is_debug:
+            logger.info("loaded checkpoint done.")
 
     if args.fuse:
         logger.info("\tFusing model...")
@@ -133,7 +138,6 @@ def main(exp, args):
         trt_file = None
         decoder = None
 
-    # predictor = Predictor(model, exp, FISH_CLASSES, trt_file, decoder, args.device, args.fp16, args.legacy)
     predictor = Predictor(model, exp, VOC_CLASSES, trt_file, decoder, args.device, args.fp16, args.legacy)
 
     print('INIT OK')
@@ -143,13 +147,13 @@ def main(exp, args):
         keyboard.wait('r')
         winsound.Beep(500, 500)
         if args.demo == "image":
-            start_fishing(predictor, TIME_OUT)
+            start_fishing(predictor, config.time_out)
 
 
 def start_fishing(predictor, TIME_OUT):
     ff = FishFind(predictor)
-    window = Window(WINDOW_NAME, 'UnityWndClass')
-    Check.setup(window.capture, READY_RECT, POS_DECT)
+    window = Window(config.window_name, 'UnityWndClass')
+    Check.setup(window.capture, config.ready_rect, config.pos_dect)
 
     do_fish_count = 0
     while True:
@@ -185,7 +189,7 @@ def start_fishing(predictor, TIME_OUT):
                 if pos is None:
                     break
                 cur, front, back = pos
-                if SHOW_CUR:
+                if config.show_cur:
                     buf = list(f'[{window.width:8}x{window.height:<9}{window.width:9}x{window.height:<8}]')
                     buf[front // 10 + 2: back // 10 + 5] = f' <{"":{back // 10 - front // 10 - 1}}> '
                     buf[cur // 10 + 2: cur // 10 + 5] = f'{"<" if buf[cur // 10 + 2] == "<" else " "}|{">"if buf[cur // 10 + 4]==">" else " "}'
@@ -204,5 +208,4 @@ def start_fishing(predictor, TIME_OUT):
 if __name__ == "__main__":
     args = make_parser().parse_args()
     exp = get_exp(args.exp_file, args.name)
-
     main(exp, args)

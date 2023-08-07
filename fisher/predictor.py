@@ -5,10 +5,9 @@ import os
 import torch
 import cv2
 
-from utils.config import SHOW_LOG
 from yolox.data.datasets.voc_classes import VOC_CLASSES
 from yolox.data.data_augment import ValTransform
-# from ..yolox.data.datasets import FISH_CLASSES
+from utils.config import config
 from yolox.utils import postprocess, vis
 
 class Predictor(object):
@@ -76,7 +75,7 @@ class Predictor(object):
                 outputs, self.num_classes, self.confthre,
                 self.nmsthre, class_agnostic=True
             )
-            if SHOW_LOG:
+            if config.is_debug:
                 logger.info("Infer time: {:.4f}s".format(time.time() - t0))
         return outputs, img_info
 

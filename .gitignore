@@ -1,4 +1,5 @@
 *.pth
 test*.py
+out.*
 img_tmp
 __pycache__/
