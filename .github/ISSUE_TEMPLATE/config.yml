@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 提问
+  - name: 讨论
     url: https://github.com/HuYo-OS/Genshin_auto_fish/discussions/new?category=q-a
-    about: 如果有任何疑问请在这里提问
+    about: 如果有什么好的点子，或者解决方案，可以在这里提出
