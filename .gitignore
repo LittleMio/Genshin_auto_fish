@@ -1,5 +1,6 @@
 *.pth
-test*.py
+test*
 out.*
 img_tmp
 __pycache__/
+config.yaml

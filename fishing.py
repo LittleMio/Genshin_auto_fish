@@ -16,7 +16,7 @@ from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info
 from yolox.data.datasets.voc_classes import VOC_CLASSES
 
-from utils.config import config
+from utils.config import config, logger
 from fisher.predictor import Predictor
 from fisher.environment import FishFind
 from fisher.fish import Window, Check
@@ -140,9 +140,9 @@ def main(exp, args):
 
     predictor = Predictor(model, exp, VOC_CLASSES, trt_file, decoder, args.device, args.fp16, args.legacy)
 
-    print('INIT OK')
+    logger.info('<g>|\t<u>初始化完成</u>\t|</g>')
     while True:
-        print('Waiting for "r" to perform fishing')
+        logger.info('<u><g>请在游戏内按 <y>R</y> 键以开始钓鱼</g></u>')
         winsound.Beep(500, 500)
         keyboard.wait('r')
         winsound.Beep(500, 500)
@@ -167,7 +167,6 @@ def start_fishing(predictor, TIME_OUT):
             break
         result: bool = ff.do_fish()
 
-        # continue if no fish found
         if not result:
             do_fish_count += 1
             continue

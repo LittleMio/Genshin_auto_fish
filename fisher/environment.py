@@ -15,14 +15,15 @@ class FishFind:
     def __init__(self, predictor, show_det=True):
         self.predictor = predictor
         self.food_imgs = [
-            cv2.imread(str(IMAGE_PATH / 'food_gn.png')), # 0, 1, 2, 3, 4
-            cv2.imread(str(IMAGE_PATH / 'food_cm.png')),
-            cv2.imread(str(IMAGE_PATH / 'food_bug.png')),
-            cv2.imread(str(IMAGE_PATH / 'food_fy.png')),
+            cv2.imread(str(IMAGE_PATH / 'food_gn.png')), # 果酿饵：0
+            cv2.imread(str(IMAGE_PATH / 'food_cm.png')), # 赤糜饵：1
+            cv2.imread(str(IMAGE_PATH / 'food_bug.png')), # 蠕虫假饵：2
+            cv2.imread(str(IMAGE_PATH / 'food_fy.png')), # 飞蝇假饵：3
+            cv2.imread(str(IMAGE_PATH / 'food_gl.png')), # 甘露饵：4
         ]
         # self.food_imgs = [cv2.cvtColor(x, cv2.COLOR_BGR2RGB) for x in self.food_imgs]
-        self.ff_dict = {'hua jiang': 0, 'ji yu': 1, 'die yu': 2, 'jia long': 3, 'pao yu': 3, 'yao': 3}
-        self.dist_dict = {'hua jiang': 130, 'ji yu': 80, 'die yu': 80, 'jia long': 80, 'pao yu': 80, 'yao': 80} # 抛竿偏移量
+        self.ff_dict = {'hua jiang': 0, 'ji yu': 1, 'die yu': 2, 'jia long': 3, 'pao yu': 3, 'yao yu': 3, 'qiang yu': 4, 'jiao tun': 4}
+        self.dist_dict = {'hua jiang': 130, 'ji yu': 80, 'die yu': 80, 'jia long': 80, 'pao yu': 80, 'yao yu': 80, 'qiang yu': 80, 'jiao tun': 80} # 鱼漂落点偏移量
         # self.food_rgn = [580, 400, 740, 220]
         self.food_rgn = [580, 440, 740, 220]
         if config.is_dieyu:
@@ -102,12 +103,6 @@ class FishFind:
         time.sleep(0.5)
         bbox_food = match_img(cap(self.food_rgn, fmt='RGB'), self.food_imgs[self.ff_dict[fish_type]],
                               type=cv2.TM_SQDIFF_NORMED)
-        # img = Image.fromarray(cap(self.food_rgn, fmt='RGB')).convert('RGB')
-        # img.save('out.png')
-        # print(bbox_food)
-        # print(bbox_food[4] + self.food_rgn[0], bbox_food[5] + self.food_rgn[1])
-        # print(bbox_food[4], bbox_food[5])
-        # print(self.food_rgn[0], self.food_rgn[1])
         pyautogui.click(bbox_food[2] + self.food_rgn[0], bbox_food[3] + self.food_rgn[1])
         time.sleep(0.5)
         if np.mean(np.abs(cap(self.food_rgn)[219][739] - [48, 43, 41])) < 5:

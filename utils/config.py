@@ -119,7 +119,7 @@ if win32gui.IsIconic(hWnd):
     win32gui.SendMessage(hWnd, win32con.WM_SYSCOMMAND, win32con.SC_RESTORE, 0)
 SCALE = round(win32print.GetDeviceCaps(hDC, win32con.DESKTOPHORZRES) / win32api.GetSystemMetrics(0), 2)
 MONITOR_WIDTH, MONITOR_HEIGHT = int(win32gui.GetClientRect(hWnd)[2] * SCALE), int(win32gui.GetClientRect(hWnd)[3] * SCALE)
-logger.info(f"当前游戏分辨率为：{MONITOR_WIDTH} x {MONITOR_HEIGHT}")
+logger.info(f"<g>当前游戏分辨率为：<y><u>{MONITOR_WIDTH} x {MONITOR_HEIGHT}</u></y></g>")
 RATIO = MONITOR_WIDTH / MONITOR_HEIGHT
 
 # TODO: Add multi-resolution adaptation

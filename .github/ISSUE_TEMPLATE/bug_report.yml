@@ -1,5 +1,7 @@
-name: 反馈 Bug
-description: 反馈错误或异常行为。
+name: Feedback Bugs
+description: |
+  反馈错误或异常行为。
+  Feedback errors or unusual behavior.
 labels: [bug]
 title: "[错误] 请更改标题"
 body:
@@ -8,9 +10,12 @@ body:
       value: |
         感谢你给 Genshin_auto_fish 提出问题！
         为了更好地帮助你和定位错误，请提供以下信息。
+        ---
+        Thank you for asking Genshin_auto_fish a question!
+        To better help you and locate the error, please provide the following information.
   - type: textarea
     attributes:
-      label: 复现步骤
+      label: 复现步骤 | Steps to Reproduce
       value: |
         1.
         2.
@@ -19,20 +24,26 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: 预期行为
-      placeholder: 正常情况下应该发生什么
+      label: 预期行为 | Expected Behavior
+      placeholder: |
+        正常情况下应该发生什么？
+        What should normally happen?
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 实际行为
-      placeholder: 实际上发生了什么
+      label: 实际行为 | Actual Behavior
+      placeholder: |
+        实际上发生了什么
+        What actually happened?
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 日志
-      description: 如果可以，请复制粘贴错误的日志或提交截图。
+      label: 日志 | Logs
+      description: |
+        如果可以，请复制粘贴错误的日志或提交截图。
+        If you can, copy and paste the error log or submit a screenshot.
       value: |
         <details>
 
