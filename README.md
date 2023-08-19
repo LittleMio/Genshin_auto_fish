@@ -125,4 +125,4 @@ python fishing.py --device cpu
 - A-1: 需要打开**原神**再运行本项目哦
 ---
 
-### 如有其他问题，欢迎提出Issues
+### 如有其他问题，欢迎提出[Issues](https://github.com/HuYo-OS/Genshin_auto_fish/issues/new/choose)
