@@ -10,7 +10,7 @@ VOC_CLASSES = (
     "ji yu",
     "pao yu",
     "yao",
-    # "qiang yu",
-    # "jiao tun",
+    "qiang yu",
+    "jiao tun",
     "rod",
 )
