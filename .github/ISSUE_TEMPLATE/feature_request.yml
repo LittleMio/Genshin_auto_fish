@@ -1,24 +1,38 @@
 ---
-name: 新特性请求
-description: 提出建议
+name: 新特性请求 | Feature Request
+description: |
+  提出关于该项目的新特性、改进或建议。
+  Propose new features, improvements or recommendations on the project.
 labels: [enhancement]
-title: "[功能要求] 请更改标题"
+title: "[功能要求] "
 body:
   - type: textarea
     attributes:
-      label: 你的请求是否与某个问题相关？
-      placeholder: 请清晰准确表述该问题。
+      label: |
+        你的请求是否与某个问题相关？
+        Is your request related to an issue?
+      placeholder: |
+        请清晰准确表述该问题。
+        Please formulate the question clearly and precisely.
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 描述你想要的解决方案
-      placeholder: 请清晰准确描述新特性的预期行为
+      label: |
+        描述你想要的解决方案。
+        Describe the solution you want.
+      placeholder: |
+        请清晰准确描述新特性的预期行为。
+        Please describe clearly and accurately the expected behavior of the new feature.
     validations:
       required: true
   - type: textarea
     attributes:
-      label: 其他信息
-      placeholder: 其他关于新特性的信息或者截图
+      label: |
+        其他信息
+        Other information
+      placeholder:
+        其他关于新特性的信息或者截图。
+        Other information about new features or screenshots.
     validations:
       required: false

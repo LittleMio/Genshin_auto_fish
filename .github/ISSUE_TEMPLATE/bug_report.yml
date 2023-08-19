@@ -1,16 +1,16 @@
-name: Feedback Bugs
+name: 反馈Bug | Feedback Bugs
 description: |
   反馈错误或异常行为。
   Feedback errors or unusual behavior.
 labels: [bug]
-title: "[错误] 请更改标题"
+title: "[错误] "
 body:
   - type: markdown
     attributes:
       value: |
         感谢你给 Genshin_auto_fish 提出问题！
         为了更好地帮助你和定位错误，请提供以下信息。
-        ---
+
         Thank you for asking Genshin_auto_fish a question!
         To better help you and locate the error, please provide the following information.
   - type: textarea

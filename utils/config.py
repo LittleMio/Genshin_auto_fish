@@ -114,6 +114,9 @@ if not ctypes.windll.shell32.IsUserAnAdmin():
     exit()
 hDC = win32gui.GetDC(0)
 hWnd = win32gui.FindWindow('UnityWndClass', config.window_name)
+if not hWnd:
+    logger.info(f"<r>未找到</r> <y>{config.window_name}</y> <r>进程，请启动后再试</r>")
+    exit()
 if win32gui.IsIconic(hWnd):
     logger.info(f"<g>检测到</g> <y>{config.window_name}</y> <g>已最小化，已自动处理</g>")
     win32gui.SendMessage(hWnd, win32con.WM_SYSCOMMAND, win32con.SC_RESTORE, 0)
