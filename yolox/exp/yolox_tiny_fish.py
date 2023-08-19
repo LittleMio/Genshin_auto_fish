@@ -6,6 +6,7 @@ import torch.distributed as dist
 
 from yolox.data import get_yolox_datadir
 from yolox.exp import Exp as MyExp
+from yolox.data.datasets import VOC_CLASSES
 
 '''
 class Exp(MyExp):
@@ -29,7 +30,7 @@ class Exp(MyExp):
 class Exp(MyExp):
     def __init__(self):
         super(Exp, self).__init__()
-        self.num_classes = 7
+        self.num_classes = len(VOC_CLASSES)
         self.depth = 0.33
         self.width = 0.375
         self.input_size = (416, 416)

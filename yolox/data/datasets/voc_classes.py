@@ -9,7 +9,7 @@ VOC_CLASSES = (
     "jia long",
     "ji yu",
     "pao yu",
-    "yao",
+    "yao yu",
     "qiang yu",
     "jiao tun",
     "rod",
