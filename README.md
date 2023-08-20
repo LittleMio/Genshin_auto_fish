@@ -1,6 +1,6 @@
 <div align='center' >
 
-# ✨✨GenshinAutoFish✨✨
+<img src="https://socialify.git.ci/HuYo-OS/Genshin_auto_fish/image?description=1&descriptionEditable=%E5%8E%9F%E7%A5%9E%E8%87%AA%E5%8A%A8%E9%92%93%E9%B1%BCAI&font=Inter&forks=1&issues=1&language=1&name=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto">
 </div>
 
 ## |简介
