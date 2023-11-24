@@ -1,13 +1,14 @@
 import re
 import sys
 import loguru
+import pyautogui
 import torch
 import ctypes
 import win32gui, win32api, win32con, win32print
 from pathlib import Path
 from pydantic import BaseModel, Field
 from typing import List, Dict
-from .tools import load_yaml, save_yaml
+from .tools import load_yaml, save_yaml, is_window_fullscreen
 
 FISH_CONFIG = Path(__file__).parent.parent / "config.yaml"
 
@@ -121,9 +122,12 @@ if win32gui.IsIconic(hWnd):
     logger.info(f"<g>检测到</g> <y>{config.window_name}</y> <g>已最小化，已自动处理</g>")
     win32gui.SendMessage(hWnd, win32con.WM_SYSCOMMAND, win32con.SC_RESTORE, 0)
 SCALE = round(win32print.GetDeviceCaps(hDC, win32con.DESKTOPHORZRES) / win32api.GetSystemMetrics(0), 2)
-MONITOR_WIDTH, MONITOR_HEIGHT = int(win32gui.GetClientRect(hWnd)[2] * SCALE), int(win32gui.GetClientRect(hWnd)[3] * SCALE)
-logger.info(f"<g>当前游戏分辨率为：<y><u>{MONITOR_WIDTH} x {MONITOR_HEIGHT}</u></y></g>")
-RATIO = MONITOR_WIDTH / MONITOR_HEIGHT
+GAME_WIDTH, GAME_HEIGHT = int(win32gui.GetClientRect(hWnd)[2] * SCALE), int(win32gui.GetClientRect(hWnd)[3] * SCALE)
+if is_window_fullscreen(hWnd):
+    GAME_WIDTH, GAME_HEIGHT = int(win32gui.GetClientRect(hWnd)[2] * SCALE) + 1, int(win32gui.GetClientRect(hWnd)[3] * SCALE) + 1
+
+logger.info(f"<g>当前游戏分辨率为：<y><u>{GAME_WIDTH} x {GAME_HEIGHT}</u></y></g>")
+RATIO = GAME_WIDTH / GAME_HEIGHT
 
 # TODO: Add multi-resolution adaptation
 if 1.8 > RATIO > 1.7:

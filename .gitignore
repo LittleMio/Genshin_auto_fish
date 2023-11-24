@@ -1,6 +1,7 @@
 *.pth
 test*
 out.*
+screenshot.png
 img_tmp
 __pycache__/
 config.yaml

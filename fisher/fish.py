@@ -12,6 +12,7 @@ from utils.config import IMAGE_PATH
 
 ctypes.windll.user32.SetProcessDpiAwarenessContext(ctypes.c_void_p(-4))
 
+
 class Window:
     def __init__(self, name, cls=None):
         self.hWnd = win32gui.FindWindow(cls, name)
@@ -61,28 +62,37 @@ class Check:
     def __init__(self, im=None):
         try:
             im = self.capture() if im is None else im
-            size = (1280, round(im.shape[0] * 1280 // im.shape[1])) \
-                if im.shape[0] * 16 > im.shape[1] * 9 else (round(im.shape[1] * 720 / im.shape[0]), 720)
+            size = (
+                (1280, round(im.shape[0] * 1280 // im.shape[1]))
+                if im.shape[0] * 16 > im.shape[1] * 9
+                else (round(im.shape[1] * 720 / im.shape[0]), 720)
+            )
             self.im = cv2.resize(im, size, interpolation=cv2.INTER_CUBIC)
-            self.im = numpy.vstack([self.im[:360, size[0]//2-640:size[0]//2+640],self.im[-360:, -1280:]])
+            self.im = numpy.vstack([self.im[:360, size[0] // 2 - 640 : size[0] // 2 + 640], self.im[-360:, -1280:]])
         except:
             self.im = numpy.zeros((720, 1280, 4), dtype=numpy.uint8)
 
     def wrapAlpha(self, im):
-        im, alpha = im[..., :3]>>4, im[..., 3] >> 4
+        im, alpha = im[..., :3] >> 4, im[..., 3] >> 4
         for i in range(3):
             im[..., i] *= alpha
         return im
 
     def isReady(self):
-        return .2 > cv2.minMaxLoc(cv2.matchTemplate(
-            self.wrapAlpha(self.im[self.readySlice]), FISHING, cv2.TM_SQDIFF_NORMED, mask=FISHINGMASK))[0]
+        return (
+            0.2
+            > cv2.minMaxLoc(
+                cv2.matchTemplate(self.wrapAlpha(self.im[self.readySlice]), FISHING, cv2.TM_SQDIFF_NORMED, mask=FISHINGMASK)
+            )[0]
+        )
 
     def getPos(self):
         img = self.wrapAlpha(self.im[self.posSlice])
         loc = cv2.minMaxLoc(cv2.matchTemplate(img, CUR, cv2.TM_SQDIFF_NORMED, mask=CURMASK))
-        if loc[0] > .2:
+        if loc[0] > 0.2:
             return None
-        return (loc[2][0],
+        return (
+            loc[2][0],
             cv2.minMaxLoc(cv2.matchTemplate(img, TARGETLEFT, cv2.TM_SQDIFF_NORMED, mask=TARGETLEFTMASK))[2][0],
-            cv2.minMaxLoc(cv2.matchTemplate(img, TARGETRIGHT, cv2.TM_SQDIFF_NORMED, mask=TARGETRIGHTMASK))[2][0])
+            cv2.minMaxLoc(cv2.matchTemplate(img, TARGETRIGHT, cv2.TM_SQDIFF_NORMED, mask=TARGETRIGHTMASK))[2][0],
+        )
